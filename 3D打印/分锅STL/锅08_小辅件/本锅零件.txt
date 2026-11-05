@@ -1,0 +1,4 @@
+1. connectors_4_alu_profiles.STL
+2. J1_wires_cover_rework.STL
+
+请将本目录中全部 STL 一次性导入 Bambu Studio，同锅摆盘后检查切片。当前为模型包，不是已切片 G-code。

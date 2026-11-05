@@ -1,0 +1,6 @@
+1. J5_part.STL
+2. J5_belt_lid.STL
+3. J5_electronics_lid.STL
+4. HTD3_48_J5_pulley.STL
+
+请将本目录中全部 STL 一次性导入 Bambu Studio，同锅摆盘后检查切片。当前为模型包，不是已切片 G-code。

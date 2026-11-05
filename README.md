@@ -7,9 +7,9 @@
 
 ## URDF and MuJoCo models
 
-**[Open the PAROL6 model guide and downloads](parol6_description/)**
+**[Open the PAROL6 model guide and downloads](parol6_description%20%EF%BC%88%E6%9C%BA%E5%99%A8%E4%BA%BA%E6%A8%A1%E5%9E%8B%E8%AF%B4%E6%98%8E%EF%BC%89)**
 
-The `parol6_description/` folder contains the product README, preview images and
+The `parol6_description （机器人模型说明）/` folder contains the product README, preview images and
 download links for all six robot/end-effector configurations.
 All maintained model files live in [robot_descriptions](https://github.com/Source-Robotics/robot_descriptions).
 Download the model ZIP for your product and simulator from the guide, then
@@ -20,7 +20,7 @@ model submodule or recursive clone.
 
 
 
-<img src="Images/img3.png" alt="drawing" width="5000"/>
+<img src="Images%20%EF%BC%88%E5%9B%BE%E7%89%87%E8%B5%84%E6%96%99%EF%BC%89/img3.png" alt="drawing" width="5000"/>
 
 <div align="center">
 
@@ -96,4 +96,4 @@ This project includes experimental software, hardware designs, and assembly docu
 THIS PROJECT INVOLVES LETHAL VOLTAGES AND OTHER SERIOUS HAZARDS THAT CAN CAUSE SEVERE INJURY. YOU MUST READ THE FULL [SAFETY WARNING AND DISCLAIMER DOCUMENT](SAFETY_WARNING_AND_DISCLAIMER.md)  BEFORE USING ANY PROJECT FILES. BY PROCEEDING, YOU ACKNOWLEDGE AND ACCEPT ALL RISKS AND AGREE TO USE THIS PROJECT ENTIRELY AT YOUR OWN RESPONSIBILITY.
 
 ## 🛡️ Licensing
-The hardware, everything in this repository except the firmware, is under the [CERN Open Hardware Licence Version 2 - Strongly Reciprocal](LICENSE) (CERN-OHL-S-2.0): the STL files, the BOM, the building instructions, the print table and the robot models. The firmware in `PAROL6 control board main software` and `PAROL6 control board test code` is under [GPL-3.0](PAROL6%20control%20board%20main%20software/LICENSE), and the libraries in their `lib` folders keep their own licences. Until 4 November 2026 the whole repository was under GPL-3.0.
+The hardware, everything in this repository except the firmware, is under the [CERN Open Hardware Licence Version 2 - Strongly Reciprocal](LICENSE) (CERN-OHL-S-2.0): the STL files, the BOM, the building instructions, the print table and the robot models. The firmware in `PAROL6 control board main software （主控正式固件）` and `PAROL6 control board test code （主控测试固件）` is under [GPL-3.0](PAROL6%20control%20board%20main%20software%20%EF%BC%88%E4%B8%BB%E6%8E%A7%E6%AD%A3%E5%BC%8F%E5%9B%BA%E4%BB%B6%EF%BC%89/LICENSE), and the libraries in their `lib` folders keep their own licences. Until 4 November 2026 the whole repository was under GPL-3.0.
