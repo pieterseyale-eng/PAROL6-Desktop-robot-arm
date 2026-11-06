@@ -1,0 +1,4 @@
+# Office lock files created while spreadsheets or documents are open.
+~$*.xlsx
+~$*.xls
+~$*.docx

@@ -1,0 +1,8 @@
+1. Elbow_part.STL
+2. Elbow_lid_1.STL
+3. Elbow_lid_2.STL
+4. J4_bearing_backplate.STL
+5. J4_limiter.STL
+6. J4_output_pulley.STL
+
+请将本目录中全部 STL 一次性导入 Bambu Studio，同锅摆盘后检查切片。当前为模型包，不是已切片 G-code。

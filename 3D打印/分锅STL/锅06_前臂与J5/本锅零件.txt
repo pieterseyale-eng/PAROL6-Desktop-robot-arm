@@ -1,4 +1,4 @@
-1. J5_part.STL
+1. J5_part_J6_plus30mm_v2.STL（J5 主体加长 30 mm，仅延长上方横板）
 2. J5_belt_lid.STL
 3. J5_electronics_lid.STL
 4. HTD3_48_J5_pulley.STL

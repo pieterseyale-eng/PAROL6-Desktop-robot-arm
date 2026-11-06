@@ -1,0 +1,6 @@
+1. Upper_arm.STL
+2. 38_pulley_J3.STL
+3. J3_limit_switch_cover.STL
+4. Upper_arm_wires_cover.STL
+
+请将本目录中全部 STL 一次性导入 Bambu Studio，同锅摆盘后检查切片。当前为模型包，不是已切片 G-code。

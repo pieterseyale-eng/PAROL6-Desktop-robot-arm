@@ -5,6 +5,20 @@
 
 </div>
 
+## 本地改装项目入口
+
+| 内容 | 位置 |
+| --- | --- |
+| 正在使用的 P1S 分锅打印文件与说明 | [3D打印](<3D打印/README.md>) |
+| STM32 + 张大头 X 固件 CAN 控制方案 | [Control](<Control/PAROL6_STM32_X固件_CAN六轴控制方案.md>) |
+| 项目进度、采购资料与财务台账 | [Docs（项目文档）](<Docs （项目文档）/项目进度.md>) |
+| 原版与改版 STL、J5 加长修改记录 | [STL（模型）](<STL （三维打印模型）/FOREARM （前臂）/J5_part_J6_plus30mm_v2.STL>) · [修改记录](<Docs （项目文档）/J5_part_J6加长30mm_修改记录.md>) |
+| 装配手册、中文版 PDF 与翻译底稿 | [Building instructions（装配说明）](<Building instructions （装配说明）/PAROL6装配说明_中文.pdf>) |
+| 电机、减速器资料 | [硬件资料](<硬件资料/张大头/PAROL6选型与控制方案.md>) |
+| 原仓库附带的 ST-LINK Windows 驱动包 | [STM32 开发工具](<硬件资料/STM32开发工具/en.stsw-link009.zip>) |
+
+打印用文件以 `3D打印/分锅STL` 中的当前版本为准；正在打印期间先核对对应锅次的 `本锅零件.txt`。
+
 ## URDF and MuJoCo models
 
 **[Open the PAROL6 model guide and downloads](parol6_description%20%EF%BC%88%E6%9C%BA%E5%99%A8%E4%BA%BA%E6%A8%A1%E5%9E%8B%E8%AF%B4%E6%98%8E%EF%BC%89)**

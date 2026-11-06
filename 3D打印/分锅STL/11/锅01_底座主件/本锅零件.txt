@@ -1,0 +1,5 @@
+1. main_base_blocker.STL
+2. Electronics_case_v1_1.STL
+3. fan_cover.STL
+
+请将本目录中全部 STL 一次性导入 Bambu Studio，同锅摆盘后检查切片。当前为模型包，不是已切片 G-code。
