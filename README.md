@@ -12,6 +12,7 @@
 | 正在使用的 P1S 分锅打印文件与说明 | [3D打印](<3D打印/README.md>) |
 | STM32 + 张大头 X 固件 CAN 控制方案 | [Control](<Control/PAROL6_STM32_X固件_CAN六轴控制方案.md>) |
 | 项目进度、采购资料与财务台账 | [Docs（项目文档）](<Docs （项目文档）/项目进度.md>) |
+| 当前制造版本 BOM（J5 新皮带规格） | [BOM_制造版本.md](<BOM （物料清单）/BOM_制造版本.md>) |
 | 原版与改版 STL、J5 加长修改记录 | [STL（模型）](<STL （三维打印模型）/FOREARM （前臂）/J5_part_J6_plus30mm_v2.STL>) · [修改记录](<Docs （项目文档）/J5_part_J6加长30mm_修改记录.md>) |
 | 装配手册、中文版 PDF 与翻译底稿 | [Building instructions（装配说明）](<Building instructions （装配说明）/PAROL6装配说明_中文.pdf>) |
 | 电机、减速器资料 | [硬件资料](<硬件资料/张大头/PAROL6选型与控制方案.md>) |
