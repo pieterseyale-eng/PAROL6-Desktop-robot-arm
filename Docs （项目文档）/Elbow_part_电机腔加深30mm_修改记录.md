@@ -1,6 +1,6 @@
 # Elbow_part 电机腔加深 30 mm：制造版记录
 
-记录日期：2026-11-07。用户查看试验版后接受底部小孔与电机腔连通，本模型已放入 `3D打印/分锅STL/锅05_肘部与J4` 供打印。
+初次记录日期：2026-11-07。用户查看试验版后接受底部小孔与电机腔连通。2026-11-11 按用户试装反馈重新定位电机插头侧壁避让窗，当前打印版见文末。
 
 ## 需求与方向
 
@@ -32,6 +32,32 @@ Z≥41 mm 的几何不在切除刀具内，故上方轴承座、带轮座和电�
 
 - 原版：`STL （三维打印模型）/ELBOW （肘部）/Elbow_part.STL`
 - 加深版：`STL （三维打印模型）/ELBOW （肘部）/Elbow_part_motor_cavity_deeper30mm.STL`
-- 当前打印副本：`3D打印/分锅STL/锅05_肘部与J4/Elbow_part_motor_cavity_deeper30mm.STL`
+- 历史打印副本：`3D打印/备份/Elbow_part_motor_cavity_deeper30mm_旧版.STL`
 - 原版打印副本备份：`3D打印/备份/Elbow_part_原版.STL`
 - 截面对比：`STL （三维打印模型）/ELBOW （肘部）/Elbow_part_motor_cavity_deeper30mm_截面对比.png`
+
+## 2026-11-11：第一次侧壁避让（位置错误，已废弃）
+
+第一次按照片将开口误判在 **+X 侧壁**，用户通过 Bambu Studio 截图指出正确位置在另一侧。此版不得作为当前打印版：
+
+- 布尔切除范围：`X=49.4～66.0 mm`、`Y=7.0～42.0 mm`、`Z=5.0～28.0 mm`。
+- 侧壁在该区域的原内侧约为 `X=49.8 mm`，刀具从内侧重叠 0.4 mm 并贯穿外表面。实际窗口约高 23 mm、沿 Y 宽 35 mm；不会切到 `Z≥28 mm` 的电机安装区。
+- 加深版体积 `238397.47 mm³`；开窗后 `227125.76 mm³`；去除约 `11271.70 mm³`。外包围盒不变，网格封闭、单个连通体。
+- 误开版备份：`3D打印/备份/Elbow_part_motor_cavity_deeper30mm_connector_relief_误开版.STL`。
+- 上一版打印副本移至：`3D打印/备份/Elbow_part_motor_cavity_deeper30mm_旧版.STL`。
+- 误开版截面对比已删除，避免与新版混淆。
+
+## 2026-11-11：按用户定位修正为左侧壁开窗
+
+重新从 `Elbow_part_motor_cavity_deeper30mm.STL` 生成，**不叠加误开版的切口**。用户截图圈出正面视图的左侧壁，在 STL 坐标为 **−X 侧**。通过模型平面面积核对，电机装配面约 `Z=83.7 mm`；沿电机轴向距该面 28 mm 的窗口近端为 `Z=55.7 mm`，再向里开 25 mm，远端为 `Z=30.7 mm`。
+
+- 布尔切除范围：`X=−1.0～16.6 mm`、`Y=−1.0～30.0 mm`、`Z=30.7～55.7 mm`。X/Y 刀具范围包含少量模型外空间，以保证左侧外表面与电机腔贯通。
+- 实际窗口轴向长 **25 mm**；从装配面到近端 **28 mm**。Y 方向宽约 30 mm，是依据插头照片估计的避让宽度；若实物仍干涉，可在该方向再调整。
+- 加深版体积 `238397.47 mm³`，修正版体积 `232919.32 mm³`，去除 `5478.15 mm³`。模型仍是封闭单实体，外包围盒保持 `64.5 × 102.0 × 107.2 mm`。
+- 当前打印版：`3D打印/分锅STL/锅05_肘部与J4/Elbow_part_motor_cavity_deeper30mm_connector_relief_left_28_25.STL`。
+- 源模型：`STL （三维打印模型）/ELBOW （肘部）/Elbow_part_motor_cavity_deeper30mm_connector_relief_left_28_25.STL`。
+- 截面对比：`STL （三维打印模型）/ELBOW （肘部）/Elbow_part_connector_relief_left_28_25_截面对比.png`。
+- 正视预览：`STL （三维打印模型）/ELBOW （肘部）/Elbow_part_connector_relief_left_28_25_正视预览.png`。
+- 再生成脚本：`STL （三维打印模型）/ELBOW （肘部）/生成电机插头避让版.py`。
+
+切口宽度尚未经插头实测。打印前应在 Bambu Studio 从用户截图相同的方向核对开口；打印后先手工试装，再检查侧壁剩余强度和线束弯折半径。

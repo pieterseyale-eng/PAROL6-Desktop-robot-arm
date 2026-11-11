@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1100" height="600" viewBox="0 0 1100 600">
+  <style>text{font:22px 'Microsoft YaHei',Arial,sans-serif;fill:#17202a}.small{font-size:17px}.dim{stroke:#2874a6;stroke-width:2;fill:none}.part{stroke:#222;stroke-width:3;fill:#e8eef2}.hole{fill:white;stroke:#222;stroke-width:3}.dash{stroke:#888;stroke-width:2;stroke-dasharray:8 7;fill:none}</style>
+  <text x="40" y="45" font-size="28" font-weight="bold">PAROL6 法兰联轴器安装孔位示意（非金属件加工图）</text>
+  <circle class="part" cx="300" cy="315" r="180"/>
+  <circle class="dash" cx="300" cy="315" r="120"/>
+  <circle class="hole" cx="300" cy="315" r="40"/>
+  <circle class="hole" cx="300" cy="195" r="18"/>
+  <circle class="hole" cx="420" cy="315" r="18"/>
+  <circle class="hole" cx="300" cy="435" r="18"/>
+  <circle class="hole" cx="180" cy="315" r="18"/>
+  <line class="dim" x1="180" y1="96" x2="420" y2="96"/>
+  <line class="dim" x1="180" y1="90" x2="180" y2="128"/>
+  <line class="dim" x1="420" y1="90" x2="420" y2="128"/>
+  <text x="240" y="86">孔距圆 Ø24 mm</text>
+  <line class="dim" x1="550" y1="195" x2="550" y2="435"/>
+  <line class="dim" x1="542" y1="195" x2="568" y2="195"/>
+  <line class="dim" x1="542" y1="435" x2="568" y2="435"/>
+  <text x="580" y="315">对孔中心距 24 mm</text>
+  <text x="620" y="180">中心轴孔 Ø8 mm</text>
+  <text x="620" y="220">4 个 M4 安装孔，90° 均布</text>
+  <text x="620" y="260">相邻孔中心距 16.97 mm</text>
+  <text x="620" y="360">所购商品图：法兰外径 Ø32 mm</text>
+  <text x="620" y="400">安装孔 Ø4 mm 光孔</text>
+  <text x="620" y="440">轴套外径 Ø16 mm，总高 13 mm</text>
+  <text class="small" x="40" y="560">依据：原 BOM 的 Ø8/M4；J2、J3、J6 STL 实测 PCD Ø24；外径和高度依据用户提供的已购商品图，待到货复测。</text>
+</svg>

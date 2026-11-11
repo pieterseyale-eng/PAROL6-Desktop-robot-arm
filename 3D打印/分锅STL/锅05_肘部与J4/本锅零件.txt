@@ -1,4 +1,4 @@
-1. Elbow_part_motor_cavity_deeper30mm.STL（电机腔沿轴线加深30 mm）
+1. Elbow_part_motor_cavity_deeper30mm_connector_relief_left_28_25.STL（电机腔加深30 mm；左侧壁插头避让窗，距装配面28 mm、轴向长25 mm）
 2. Elbow_lid_1.STL
 3. Elbow_lid_2.STL
 4. J4_bearing_backplate.STL
