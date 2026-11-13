@@ -1,0 +1,20 @@
+<!doctype html>
+<html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>PAROL6 控制讨论记录</title><style>body{font:16px/1.8 system-ui,"Microsoft YaHei",sans-serif;background:#f2f6fa;color:#243240;margin:0}main{max-width:900px;margin:30px auto;padding:36px 48px;background:#fff;border-radius:12px}h1,h2{color:#16436a}h2{border-bottom:1px solid #dce5ee}table{border-collapse:collapse;width:100%}td,th{border:1px solid #d5e0e9;padding:8px;text-align:left}th{background:#eef5fb}pre{background:#182b40;color:#e8f2fc;padding:18px;overflow:auto;border-radius:8px}.note{background:#fff6e5;padding:14px;border-left:4px solid #e3a32d}a{color:#1262a1}@media(max-width:600px){main{margin:0;padding:20px}}</style></head><body><main>
+<h1>PAROL6 控制与接线讨论记录</h1><p>2026-11-12 · 后续控制设计和 PCB 研究参考</p>
+<p><strong>今天的核心：</strong>六个关节回零需要六路独立数字输入。三个接近传感器可理解为由金属控制、将信号拉向地的电子开关；另外三个是机械开关。主控通过 CAN 分别控制六个张大头驱动器。</p>
+<h2>闭环与回零</h2><p>张大头驱动器在电机侧做闭环。手册第 69 页说明线性化编码器是单圈绝对值，一圈内角度可识别，但每转一圈读数重复。电机经过减速器后，单圈读数通常不能唯一确定关节位置；电机编码器也不能直接测出传动回差或皮带打滑。因此保留关节回零传感器，用于建立或恢复零点。</p><p>手册第 7 页对比表标明 Y42_V2.0 支持电池掉电记录，X42S_V1.0 不支持。实际板卡完整型号、电池规格、断电期间转动的记录方式和失效判断仍需核实；验证前不要依赖它免回零。</p>
+<h2>六个回零传感器</h2><table><tr><th>关节</th><th>讨论的选型</th><th>待核对</th></tr><tr><td>J1</td><td>M5 螺纹 NPN 常开 ZC2Y-M05SD01W-N1，标称 1 mm</td><td>长度、孔位及实际间距</td></tr><tr><td>J2、J3、J5</td><td>ZW12-3 机械微动开关</td><td>孔距、滚轮位置及触发行程</td></tr><tr><td>J4</td><td>GX-F8A 方形 NPN 常开</td><td>实物型号和安装位置</td></tr><tr><td>J6</td><td>Φ4 光杆 NPN 常开 ZC2Y-C04SD008W-N1，标称 0.8 mm</td><td>Link 5 加长后实测孔位、触发件和间距</td></tr></table><p>三款接近传感器资料均标示棕线接供电正极、蓝线接 0 V、黑线输出信号。金属触发时黑线拉向 0 V，未触发时输出断开。标称距离不保证对任何形状及材质的金属都有效。</p>
+<h2>上拉与数字输入</h2><p>传感器使用 24 V 供电，不等于黑线固定输出 24 V。NPN 开集电极输出可考虑通过电阻上拉至 3.3 V：未触发为高电平，触发时拉低。每路分别接独立 GPIO 和上拉电阻。</p><pre>ESP32 3.3V ──[10 kΩ]──┬── GPIO 输入（实验时先断开）
+                       └── 传感器黑线
+24V+ ───────────────────── 传感器棕线
+24V 0V ───────────────┬─── 传感器蓝线
+                      └─── ESP32 GND</pre><div class="note"><strong>这是实验原理图，不是最终 PCB 电路。</strong>10 kΩ 只是测试起点。先不连接 GPIO，用万用表测黑线对 0 V 的触发和未触发电压；核对芯片阈值、漏电流、断电状态及干扰后，再设计限流、滤波、保护或隔离。GX-F8A 官方残压≤2 V 的条件是 100 mA，不能据此保证 ESP32 低电平识别。24 V 不可直接接 GPIO。</div><p>机械开关可作为触点输入，考虑内部或外部上拉与消抖。上拉电阻在开关断开时提供确定的高电平，在导通时限制流向地的电流。</p>
+<h2>主控与电源</h2><p>微雪 ESP32-S3-RS485-CAN 的电源端子支持 DC 7～36 V，24 V 可接该端子；USB-C 为 5 V。其官方外部接口表列有 GPIO1、GPIO2，六路回零需扩展或另找可用接口。普通 ESP32 若有足够合适 GPIO，可采集六路，但需要 3.3 V 逻辑兼容 CAN 收发器、24 V 降压电源和输入适配电路；方案尚未冻结。</p><p>讨论的整机电源为 220 V 交流转 24 V / 8 A 直流（192 W），驱动器与主控并联供电。原版参考 24 V / 5 A，但改用闭环驱动后不能保证相同容量足够。8 A 是调试候选，六轴同时带载须实测供电电压、电流、温升和保护动作；需核对电机型号、电源连续额定值、线径和接头。</p><p>急停使用常闭触点接入独立停机控制回路，不能假定按钮可直接切断六台电机总电流。断电可能导致重力轴下落，须考虑支撑或制动。</p>
+<h2>CAN 接线与终端电阻</h2><pre>微雪 / 主控端                                  总线末端
+CAN-H ─────┬──── 驱动1 ── 驱动2 ── … ── 驱动6 ───┬──
+           │                                      │
+         [120Ω]                                 [120Ω]
+           │                                      │
+CAN-L ─────┴──── 驱动1 ── 驱动2 ── … ── 驱动6 ───┴──</pre><p>每个驱动器 H 接 H、L 接 L；两个电阻分别跨接总线两端 H 和 L，不是串入信号线。采用干线加短支线，六台设不同地址，波特率一致。微雪板有可启用的 120 Ω；张大头 CAN 模块是否内置及如何启用尚未确认。厂家图片将末端电阻标为可不接，正式布线仍建议两端匹配。完全断电后测量 H-L 可辅助排查；两只 120 Ω 并联理想值约 60 Ω，读数须结合实际电路判断。</p><p>要在主控实现张大头 CAN 协议、状态读取、超时和故障处理；先单轴验证再逐轴接入，并核对模块针脚和信号参考地。</p>
+<h2>画 PCB 前待确认</h2><ul><li>六台电机、驱动板和 CAN 模块完整型号、供电及电流。</li><li>主控和六路 GPIO、CAN 收发器、24 V 降压及输入保护。</li><li>各传感器的实际残压、漏电流、触发距离和实物线序。</li><li>急停硬件路径、断电防坠、电源支路保护及 J6 结构间隙。</li><li>单轴低速验证回零、通信异常和供电后再做六轴联动。</li></ul>
+<h2>参考资料</h2><ul><li><a href="../硬件资料/张大头/ZDT_X42S第二代闭环步进电机用户手册V1.0.5_260527.pdf">本地张大头用户手册</a></li><li><a href="https://industry.panasonic.com/global/en/products/fasys/sensor/proximity/number/gx-f8a">松下 GX-F8A 官方规格</a></li><li><a href="https://docs.waveshare.net/ESP32-S3-RS485-CAN/">微雪 ESP32-S3-RS485-CAN 官方资料</a></li><li><a href="../Control/PAROL6_STM32_X固件_CAN六轴控制方案.md">本地 CAN 六轴控制方案草案</a></li></ul></main></body></html>
